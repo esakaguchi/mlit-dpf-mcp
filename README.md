@@ -23,19 +23,19 @@
 
 ## 2. 主な機能
 国土交通データプラットフォームの利用者向けAPIを活用し、以下の機能を提供します：
-* `search`（キーワードによるデータ検索。並べ替えや取得件数の指定も可能です。）
+* `search`（キーワードの指定によりデータを検索します。並べ替えや件数の指定も可能です。）
 * `search_by_location_rectangle`（指定した矩形範囲と交差するデータを検索します。）
 * `search_by_location_point_distance`（指定した地点と半径からなる円形範囲と交差するデータを検索します。）
-* `search_by_attribute`（カタログ名、データセット名、都道府県、市区町村などの属性を指定して検索します。）
+* `search_by_attribute`（カタログ名、データセット名、都道府県、市区町村などの属性を指定してデータを検索します。）
 * `get_data`（データの詳細情報を取得します。）
-* `get_data_summary`（データIDとタイトルなど、データの基本的な情報のみを取得します。）
+* `get_data_summary`（データIDとタイトルなどのデータの基本情報を取得します。）
 * `get_data_catalog`（データカタログやデータセットの詳細情報を取得します。）
-* `get_data_catalog_summary`（データカタログやデータセットのIDやタイトルなどの基本情報を取得します。）
+* `get_data_catalog_summary`（IDやタイトルなどのデータカタログやデータセットの基本情報を取得します。）
 * `get_file_download_urls`（ファイルのダウンロード用URLを取得します（有効期限：60秒）。）
 * `get_zipfile_download_url`（複数ファイルをZIP形式でまとめたダウンロードURLを取得します（有効期限：60秒）。）
 * `get_thumbnail_urls`（サムネイル画像のURLを取得します（有効期限：60秒）。）
 * `get_all_data`（条件に一致する大量のデータを一括取得します。）
-* `get_count_data`（指定条件に一致するデータ件数を取得。分類ごとの集計も可能です。）
+* `get_count_data`（条件に一致するデータ件数を取得します。）
 * `get_suggest`（キーワード検索時の候補を取得します。）
 * `get_prefecture_data`（都道府県名・コードの一覧を取得します。）
 * `get_municipality_data`（市区町村名・コードの一覧を取得します。）
@@ -93,14 +93,14 @@ Claude DesktopなどのMCP対応AIアプリケーション および Python が�
    MLIT_BASE_URL=https://www.mlit-data.jp/api/v1/
    ```
 
-   あるいは手動で設定することも可能です：
+   あるいはコマンドラインから直接設定することも可能です：
 
    ```bash
    export MLIT_API_KEY=your_api_key_here
    export MLIT_BASE_URL=https://www.mlit-data.jp/api/v1/
    ```
 
-   `MLIT_API_KEY`は必ず、手順1で取得したAPIキーに変更してください。
+   `your_api_key_here`は必ず、手順1で取得したAPIキーに置き換えてください。
 
 6. **MCP サーバーの起動**
 
@@ -119,13 +119,13 @@ Claude DesktopなどのMCP対応AIアプリケーション および Python が�
    ```json
    {
      "mcpServers": {
-       "mlit-mcp": {
+       "mlit-dpf-mcp": {
          "command": "......./mlit-dpf-mcp/.venv/Scripts/python.exe",
          "args": [
            "....../mlit-dpf-mcp/src/server.py"
          ],
          "env": {
-           "MLIT_API_KEY": "your-MLIT-api-key",
+           "MLIT_API_KEY": "your_api_key_here",
            "MLIT_BASE_URL": "https://www.mlit-data.jp/api/v1/",
            "PYTHONUNBUFFERED": "1",
            "LOG_LEVEL": "WARNING"
@@ -136,7 +136,7 @@ Claude DesktopなどのMCP対応AIアプリケーション および Python が�
    ```
 
    `command`と`args`は必ず、実際のパスに変更してください。  
-   `MLIT_API_KEY`は必ず、手順1で取得したAPIキーに変更してください。
+   `your_api_key_here`は必ず、手順1で取得したAPIキーに置き換えてください。
 
 9. **Claude Desktop を再起動**
 

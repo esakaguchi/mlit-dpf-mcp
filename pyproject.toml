@@ -1,5 +1,5 @@
 [project]
-name = "mlit-mcp"
+name = "mlit-dpf-mcp"
 version = "0.1.0"
 description = "MCP server for MLIT (MLIT Data Platform wrapper)"
 readme = "README.md"
