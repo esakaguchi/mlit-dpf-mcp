@@ -1,3 +1,6 @@
-fastapi==0.111.0
-uvicorn==0.30.1
-pydantic==2.7.1
+mcp>=1.0.0
+starlette>=0.37
+anyio>=4.0
+fastapi>=0.111  # ←Starletteだけでも動きますが残してOK
+uvicorn>=0.30
+pydantic>=2.7
