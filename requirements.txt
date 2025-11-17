@@ -1,9 +1,9 @@
-mcp>=1.1.2
+mcp>=1.1.2,<2
 starlette>=0.37.2,<0.38
 uvicorn>=0.30,<0.31
-aiohttp>=3.9
-tenacity>=8.2
-pydantic>=2.8
-python-json-logger>=2.0
-python-dotenv>=1.0
 anyio>=4.6,<5
+aiohttp>=3.9,<4
+tenacity>=8.2,<9
+pydantic>=2.8,<3
+python-json-logger>=2.0,<3
+python-dotenv>=1.0,<2
