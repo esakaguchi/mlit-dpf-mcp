@@ -1,3 +1,4 @@
+# src/main.py
 from starlette.applications import Starlette
 from starlette.responses import PlainTextResponse
 from starlette.routing import Route, Mount
@@ -8,8 +9,11 @@ async def health(_):
 
 app = Starlette(
     routes=[
-        Route("/", health),
-        # FastMCP 1.x では streamable_http_app() を使う
+        # ヘルスチェック
+        Route("/", health, methods=["GET"]),
+        Route("/mcp", health, methods=["GET"]),   # ChatGPT の疎通チェック用
+
+        # MCP は /mcp 配下で受ける（POST /mcp など）
         Mount("/mcp", app=mcp.streamable_http_app()),
     ]
 )
