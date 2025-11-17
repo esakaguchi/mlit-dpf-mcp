@@ -1,4 +1,5 @@
 {
   "builds": [{ "src": "src/main.py", "use": "@vercel/python" }],
-  "routes": [{ "src": "/(.*)", "dest": "src/main.py" }]
+  "routes": [{ "src": "/(.*)", "dest": "src/main.py" }],
+  "installCommand": "pip3.12 install -r requirements.txt"
 }
