@@ -1,8 +1,15 @@
 # src/mcp_app.py
+from typing import Optional
 from mcp.server.fastmcp import FastMCP
 from src.client import MLITClient
 
-mcp = FastMCP("mlit-mcp")  # サーバ名は任意
+mcp = FastMCP("mlit-mcp")
+
+# まずは疎通確認用の最小ツール
+@mcp.tool()
+def ping() -> dict:
+    """ヘルスチェック用"""
+    return {"ok": True}
 
 @mcp.tool()
 async def search(
@@ -10,12 +17,13 @@ async def search(
     first: int = 0,
     size: int = 50,
     phrase_match: bool = True,
-    sort_attribute_name: str | None = None,
-    sort_order: str | None = None,
+    # ↓ ここを Optional[str] にする（PEP604 は使わない）
+    sort_attribute_name: Optional[str] = None,
+    sort_order: Optional[str] = None,
     minimal: bool = False,
-):
+) -> dict:
     """
-    MLIT DPF のキーワード検索。ChatGPT がこのツールを自動で使います。
+    MLIT DPF のキーワード検索
     """
     client = MLITClient()
     try:
@@ -29,6 +37,6 @@ async def search(
             sort_order=sort_order,
             fields=fields,
         )
-        return data  # FastMCP は dict/配列をそのまま JSON として返せます
+        return data
     finally:
         await client.close()
