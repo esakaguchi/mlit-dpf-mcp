@@ -9,7 +9,7 @@ async def health(_):
 app = Starlette(
     routes=[
         Route("/", health),
-        # ★ FastMCP 0.4 系では asgi_app() ではなく streamable_http_app() を使う
-        Mount("/", app=mcp.streamable_http_app()),
+        # FastMCP 1.x では streamable_http_app() を使う
+        Mount("/mcp", app=mcp.streamable_http_app()),
     ]
 )
